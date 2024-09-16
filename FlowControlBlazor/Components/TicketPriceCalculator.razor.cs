@@ -9,6 +9,9 @@ namespace FlowControlBlazor.Components
         public int Price;
     }
 
+    /// <summary>
+    /// A class for calculating ticket prices for a group of people based on their ages.
+    /// </summary>
     public partial class TicketPriceCalculator
     {
         private struct TicketPrice(int price, int minimumAge, int maximumAge)
@@ -45,6 +48,9 @@ namespace FlowControlBlazor.Components
             SetNumberOfPeople();
         }
 
+        /// <summary>
+        /// Reinstantiates the PersonModels array of size NrOfPeople.
+        /// </summary>
         void SetNumberOfPeople()
         {
             PersonModels = new PersonModel[NrOfPeople];
