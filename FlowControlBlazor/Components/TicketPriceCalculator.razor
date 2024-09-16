@@ -1,0 +1,40 @@
+﻿<h1>Ticket price calculator</h1>
+
+<div style="display:flex; flex-flow:row">
+    <div style="height:500px; width:45%; margin-left:1%; padding:25px; background-color:slategrey; border: solid; border-color:black; border-width:5px; border-radius:15px;">
+        <EditForm Enhance Model="PersonModels" OnValidSubmit="@SetNumberOfPeople" FormName="TicketPriceForm" OnInvalidSubmit="@HandleInvalidSubmit">
+            <label>Number of participants</label>
+            <InputNumber id="nrOfPeople" class="form-control col-md-8" @bind-Value="@NrOfPeople" placeholder="Enter number of people"></InputNumber>
+            <button type="submit" class="btn btn-primary me-1">Update form</button>
+
+        </EditForm>
+        <EditForm Enhance Model="PersonModels" OnValidSubmit="@HandleValidSubmit" FormName="TicketPriceForm" OnInvalidSubmit="@HandleInvalidSubmit">
+            @foreach (PersonModel personModel in PersonModels)
+            {
+                <div>
+                    <label>Name</label>
+                    <InputText class="form-control col-md-8" @bind-Value="personModel.Name" placeholder="Enter name"></InputText>
+                    <label>Age</label>
+                    <InputNumber class="form-control col-md-8" @bind-Value="personModel.Age" placeholder="Enter age"></InputNumber>
+                    @* <InputText class="form-control col-md-8" @bind-Value="personModel.Age" placeholder="Enter age"></InputText> *@
+                </div>
+            }
+
+            <button type="submit" class="btn btn-primary me-1">Calculate costs</button>
+
+        </EditForm>
+    </div>
+    <div style="height:500px; width:45%; margin-left:2%; padding:25px; background-color:slategrey; border: solid; border-color:black; border-width:5px; border-radius:15px;">
+        <h2>Price: @ticketPrice</h2>
+        @foreach (PersonModel personModel in PersonModels)
+        {
+            if (personModel == null) continue;
+
+            <ul>
+                <li>Name: @personModel.Name</li>
+                <li>Age: @personModel.Age</li>
+                <li>Price: @personModel.Price</li>
+            </ul>
+        }
+    </div>
+</div>

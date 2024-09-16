@@ -1,0 +1,43 @@
+﻿<h3>IterationManager</h3>
+
+<h3>Repeat word @nrOfRepetitions times.</h3>
+
+<div style="display:flex; flex-flow:row;">
+    <div style="height:500px; width:45%; margin-left:1%; padding:25px; background-color:slategrey; border: solid; border-color:black; border-width:5px; border-radius:15px;">
+        <EditForm Enhance Model="inputRepeat" OnValidSubmit="@HandleValidSubmitRepeat" FormName="TicketPriceForm" OnInvalidSubmit="@HandleInvalidSubmit">
+            <label>Number of repetitions</label>
+            <InputNumber class="form-control col-md-8" @bind-Value="nrOfRepetitions" placeholder="Enter number of repetitions"></InputNumber>
+            <button type="submit" class="btn btn-primary me-1">Update form</button>
+        </EditForm>
+        <EditForm Enhance Model="inputRepeat" OnValidSubmit="@HandleValidSubmitRepeat" FormName="TicketPriceForm" OnInvalidSubmit="@HandleInvalidSubmit">
+            <label>Your input</label>
+            <InputText class="form-control col-md-8" @bind-Value="inputRepeat" placeholder="Enter name"></InputText>
+            <button type="submit" class="btn btn-primary me-1">Update form</button>
+        </EditForm>
+    </div>
+
+    <div style="height:500px; width:45%; margin-left:2%; padding:25px; background-color:slategrey; border: solid; border-color:black; border-width:5px; border-radius:15px;">
+
+        @for (int i = 0; i < nrOfRepetitions; i++)
+        {
+            <p>@outputRepeat</p>
+        }
+    </div>
+</div>
+
+<h3>Third word.</h3>
+<p>@thirdWordError</p>
+<div style="display:flex; flex-flow:row;">
+    <div style="height:500px; width:45%; margin-left:1%; padding:25px; background-color:slategrey; border: solid; border-color:black; border-width:5px; border-radius:15px;">
+        <EditForm Enhance Model="inputRepeat" OnValidSubmit="@HandleValidSubmitThirdWord" FormName="TicketPriceForm" OnInvalidSubmit="@HandleInvalidSubmit">
+            <label>Please enter a string, containing at least 3 words separated by spaces</label>
+            <InputText class="form-control col-md-8" @bind-Value="inputThirdWord" placeholder="Enter name"></InputText>
+            <button type="submit" class="btn btn-primary me-1">Update form</button>
+        </EditForm>
+    </div>
+
+    <div style="height:500px; width:45%; margin-left:2%; padding:25px; background-color:slategrey; border: solid; border-color:black; border-width:5px; border-radius:15px;">
+        <p>Your input: @inputThirdWord</p>
+        <p>Output: @outputThirdWord</p>
+    </div>
+</div>
